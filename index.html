@@ -1699,7 +1699,7 @@ const TOPICS_BY_SUBJECT={
 // 1) Create a Supabase project.
 // 2) Copy your Project URL and anon public key from Supabase > Project Settings > API.
 // 3) Paste them here. Until then, the site falls back to local demo mode.
-const SUPABASE_URL = 'https://qwwcznybsytshiapixbr.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://qwwcznybsytshiapixbr.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_mcVDzNbd_LdfSEFPsb-2Ig_bGvbVFdG';
 const SUPABASE_READY = SUPABASE_URL.startsWith('https://') && SUPABASE_ANON_KEY.length > 40;
 const supabaseClient = SUPABASE_READY && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
