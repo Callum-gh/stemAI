@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   stemA*I &mdash; exam-specific STEM revision
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
+
+  --bg:#f6f7fb;
+  --surface:#ffffff;
+  --surface-2:#f8fafc;
+  --text:#111827;
+  --muted:#667085;
+  --soft:#eef2ff;
+
+  --line:rgba(17,24,39,.09);
+  --blue:#2557f6;
+  --blue-2:#1d4ed8;
+  --ink:#0b1020;
+  --green:#16a34a;
+  --amber:#f59e0b;
+
+  --shadow:0 20px 70px rgba(15,23,42,.08);
+  --radius:24px;
+  --font:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+html {
+  scroll-behavior:smooth
+}
+body {
+  font-family:var(--font);
+  background:radial-gradient(circle at 12% 0%,#e9efff 0,transparent 32rem),var(--bg);
+  color:var(--text);
+  line-height:1.5
+}
+.wrap {
+  max-width:1140px;
+  margin:0 auto;
+  padding:0 24px
+}
+.hide {
+  display:none!important
+}
+
+button,input,select,textarea {
+  font-family:inherit
+}
+button {
+  cursor:pointer
+}
+.nav {
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)
+}
+.nav-inner {
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.brand {
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:-.7px
+}
+.brand span {
+  color:var(--blue)
+}
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:6px
+}
+.nav-links a,.link-btn {
+  border:0;
+  background:transparent;
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:700;
+  font-size:14px;
+  padding:9px 12px;
+  border-radius:999px
+}
+.nav-links a:hover,.link-btn:hover {
+  color:var(--blue);
+  background:var(--soft)
+}
+.primary {
+  border:0;
+  background:var(--blue);
+  color:#fff;
+  font-weight:800;
+  border-radius:14px;
+  padding:12px 18px;
+  font-size:15px;
+  letter-spacing:-.1px;
+  box-shadow:0 12px 24px rgba(37,87,246,.18)
+}
+.primary:hover {
+  background:var(--blue-2)
+}
+.secondary {
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  font-weight:800;
+  border-radius:14px;
+  padding:12px 18px;
+  font-size:15px;
+  letter-spacing:-.1px
+}
+.secondary:hover {
+  border-color:rgba(37,87,246,.35);
+  color:var(--blue)
+}
+
+.hero {
+  padding:48px 0 46px
+}
+.hero-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);
+  gap:40px;
+  align-items:start
+}
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  border:1px solid var(--line);
+  padding:7px 13px;
+  border-radius:999px;
+  color:var(--blue);
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 10px 30px rgba(15,23,42,.04)
+}
+.dot {
+  width:7px;
+  height:7px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(22,163,74,.12)
+}
+h1 {
+  font-size:clamp(44px,6vw,72px);
+  line-height:.96;
+  letter-spacing:-3.4px;
+  margin:20px 0 18px
+}
+.thin {
+  font-weight:300;
+  font-style:italic
+}
+.blue {
+  color:var(--blue)
+}
+.lead {
+  font-size:18px;
+  max-width:620px;
+  color:var(--muted);
+  line-height:1.75
+}
+.hero-actions {
+  display:flex;
+  gap:12px;
+  margin:30px 0 18px;
+  flex-wrap:wrap
+}
+.hero-actions .primary,.hero-actions .secondary {
+  font-size:17px;
+  padding:15px 22px;
+  border-radius:16px;
+  letter-spacing:-.15px;
+  min-width:190px
+}
+.hero-actions .primary {
+  box-shadow:0 15px 30px rgba(37,87,246,.22)
+}
+.hero-actions .secondary {
+  box-shadow:0 14px 32px rgba(15,23,42,.06)
+}
+.trust {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700
+}
+.chip {
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.75);
+  padding:6px 10px;
+  border-radius:999px
+}
+.hero-proof {
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  max-width:620px
+}
+.proof-tile {
+  background:rgba(255,255,255,.82);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px 14px 13px;
+  box-shadow:0 14px 34px rgba(15,23,42,.045)
+}
+.proof-tile strong {
+  display:block;
+  font-size:14px;
+  letter-spacing:-.2px;
+  color:var(--text);
+  margin-bottom:3px
+}
+.proof-tile span {
+  display:block;
+  font-size:12px;
+  line-height:1.45;
+  color:var(--muted);
+  font-weight:700
+}
+.panel {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden
+}
+.mock-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 18px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,#fff,#f8fafc)
+}
+.traffic {
+  display:flex;
+  gap:6px
+}
+.traffic i {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#d0d5dd
+}
+.mock-body {
+  padding:20px
+}
+.question-card {
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  background:var(--surface-2)
+}
+.meta {
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--blue);
+  font-weight:600;
+  margin-bottom:12px
+}
+.q {
+  font-size:15px;
+  color:#1f2937;
+  line-height:1.7
+}
+.exam-paper {
+  background:#fff;
+  border:1px solid rgba(15,23,42,.18);
+  border-radius:12px;
+  padding:20px 20px 16px;
+  color:#111827;
+  box-shadow:0 10px 26px rgba(15,23,42,.04);
+  position:relative
+}
+.exam-paper:before {
+  content:'Exam-style preview';
+  position:absolute;
+  top:10px;
+  right:14px;
+  font-family:var(--mono);
+  font-size:10px;
+  color:#98a2b3;
+  text-transform:uppercase;
+  letter-spacing:.8px
+}
+.exam-paper .exam-line {
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  font-size:16px;
+  line-height:1.9;
+  padding-top:8px
+}
+.exam-paper .q-num {
+  font-family:var(--mono);
+  font-weight:800;
+  color:#111827;
+  flex:none
+}
+.exam-paper .part {
+  display:block;
+  margin-top:10px
+}
+.exam-paper .part b {
+  font-family:var(--mono);
+  margin-right:8px
+}
+.exam-paper .marks-note {
+  text-align:right;
+  font-family:var(--mono);
+  font-size:12px;
+  color:#475467;
+  margin-top:12px
+}
+.exam-paper h4 {
+  font-size:15px;
+  font-weight:600;
+  line-height:1.75
+}
+.marks {
+  margin-top:14px;
+  display:flex;
+  gap:8px
+}
+.mark {
+  height:7px;
+  flex:1;
+  background:#dbeafe;
+  border-radius:999px
+}
+.mark:nth-child(-n+4) {
+  background:var(--blue)
+}
+.tutor {
+  margin-top:14px;
+  background:var(--ink);
+  color:#fff;
+  border-radius:18px;
+  padding:16px
+}
+.tutor-row {
+  display:flex;
+  gap:10px;
+  margin-top:11px
+}
+.bubble {
+  font-size:13px;
+  line-height:1.55;
+  padding:10px 12px;
+  border-radius:14px;
+  max-width:88%
+}
+.bubble.ai {
+  background:#1e293b
+}
+.bubble.me {
+  background:var(--blue);
+  margin-left:auto
+}
+.mini-title {
+  font-weight:800;
+  font-size:13px;
+  color:#c7d2fe
+}
+.mini-sub {
+  font-size:12px;
+  color:#94a3b8;
+  margin-top:2px
+}
+
+.section {
+  padding:54px 0
+}
+.section-head {
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 28px
+}
+.label {
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:10px
+}
+.section h2 {
+  font-size:clamp(30px,4vw,46px);
+  letter-spacing:-1.8px;
+  line-height:1.05
+}
+.section p.sub {
+  color:var(--muted);
+  font-size:16px;
+  margin-top:12px;
+  line-height:1.7
+}
+.grid3 {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px
+}
+.card {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 14px 40px rgba(15,23,42,.04)
+}
+.icon {
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  background:var(--soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  font-weight:900;
+  margin-bottom:16px
+}
+.card h3 {
+  font-size:18px;
+  letter-spacing:-.4px;
+  margin-bottom:8px
+}
+.card p {
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.65
+}
+.flow {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px
+}
+.steps {
+  display:flex;
+  flex-direction:column;
+  gap:12px
+}
+.step {
+  display:flex;
+  gap:14px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px
+}
+.num {
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  background:var(--ink);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:13px;
+  flex:none
+}
+.step h3 {
+  font-size:16px;
+  margin-bottom:4px
+}
+.step p {
+  font-size:14px;
+  color:var(--muted)
+}
+.spec {
+  padding:22px;
+  background:var(--ink);
+  border-radius:22px;
+  color:#fff;
+  box-shadow:var(--shadow)
+}
+.spec h3 {
+  font-size:20px;
+  letter-spacing:-.5px
+}
+.spec-list {
+  margin-top:18px;
+  display:grid;
+  gap:10px
+}
+.spec-item {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:16px;
+  padding:13px 14px
+}
+.spec-item span {
+  font-size:13px;
+  color:#cbd5e1
+}
+.tick {
+  color:#86efac;
+  font-weight:900
+}
+.demo {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  gap:0
+}
+.practice {
+  padding:20px;
+  border-right:1px solid var(--line)
+}
+.chat {
+  display:flex;
+  flex-direction:column;
+  min-height:500px
+}
+.tabs {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:14px
+}
+.tab {
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--muted);
+  font-weight:800;
+  font-size:12px;
+  padding:8px 12px;
+  border-radius:999px
+}
+.tab.on {
+  background:var(--blue);
+  color:#fff;
+  border-color:var(--blue)
+}
+.select-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:16px
+}
+.field-label {
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin:0 0 7px 2px
+}
+select {
+  width:100%;
+  border:1px solid rgba(37,87,246,.22);
+  border-radius:16px;
+  padding:14px 15px;
+  background:#fff;
+  color:var(--text);
+  font-weight:900;
+  font-size:15px;
+  box-shadow:0 10px 26px rgba(15,23,42,.04)
+}
+.demo-q {
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  min-height:250px
+}
+.demo-q h4 {
+  font-size:15px;
+  margin-bottom:10px
+}
+.demo-q p {
+  font-size:14px;
+  color:#334155;
+  line-height:1.7
+}
+textarea {
+  width:100%;
+  min-height:96px;
+  margin-top:14px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:13px;
+  resize:vertical;
+  outline:none
+}
+.actions {
+  display:flex;
+  gap:10px;
+  margin-top:12px
+}
+.feedback {
+  margin-top:12px;
+  border-radius:16px;
+  padding:13px;
+  font-size:13px;
+  line-height:1.55
+}
+.feedback.good {
+  background:#ecfdf3;
+  border:1px solid #bbf7d0
+}
+.feedback.warn {
+  background:#fffbeb;
+  border:1px solid #fde68a
+}
+.chat-head {
+  padding:18px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.avatar {
+  width:38px;
+  height:38px;
+  border-radius:14px;
+  background:var(--blue);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900
+}
+.messages {
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  overflow:auto;
+  flex:1;
+  background:#fbfdff
+}
+.msg {
+  font-size:13px;
+  line-height:1.6;
+  padding:11px 13px;
+  border-radius:16px;
+  max-width:88%;
+  white-space:pre-wrap
+}
+.msg.ai {
+  background:#eef2ff;
+  color:#1e293b;
+  border-bottom-left-radius:5px
+}
+.msg.user {
+  background:var(--blue);
+  color:#fff;
+  margin-left:auto;
+  border-bottom-right-radius:5px
+}
+.chat-input {
+  display:flex;
+  gap:8px;
+  padding:12px;
+  border-top:1px solid var(--line)
+}
+.chat-input input {
+  flex:1;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:12px;
+  outline:none
+}
+.send {
+  width:44px;
+  border:0;
+  background:var(--blue);
+  color:#fff;
+  border-radius:13px;
+  font-weight:900
+}
+.banner {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#7c2d12;
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:14px;
+  font-size:13px;
+  line-height:1.55
+}
+.pricing {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px
+}
+.price {
+  position:relative
+}
+.price.featured {
+  border-color:rgba(37,87,246,.35);
+  box-shadow:0 22px 70px rgba(37,87,246,.12)
+}
+.price h3 {
+  font-size:19px
+}
+.amount {
+  font-size:34px;
+  font-weight:900;
+  letter-spacing:-1.4px;
+  margin:12px 0
+}
+.amount small {
+  font-size:14px;
+  color:var(--muted);
+  font-weight:700
+}
+.features {
+  display:grid;
+  gap:9px;
+  margin:18px 0
+}
+.features li {
+  list-style:none;
+  font-size:14px;
+  color:var(--muted)
+}
+.features li:before {
+  content:'✓';
+  color:var(--green);
+  font-weight:900;
+  margin-right:8px
+}
+.ribbon {
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:var(--soft);
+  color:var(--blue);
+  font-size:11px;
+  font-weight:900;
+  padding:5px 9px;
+  border-radius:999px
+}
+.faq {
+  max-width:820px;
+  margin:auto;
+  display:grid;
+  gap:10px
+}
+.faq details {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px
+}
+.faq summary {
+  cursor:pointer;
+  font-weight:900
+}
+.faq p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  margin-top:10px
+}
+.cta {
+  background:var(--ink);
+  color:#fff;
+  border-radius:30px;
+  padding:42px;
+  text-align:center
+}
+.cta p {
+  color:#94a3b8;
+  margin:12px auto 24px;
+  max-width:560px
+}
+footer {
+  padding:34px 0;
+  color:var(--muted);
+  font-size:13px
+}
+.foot {
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  gap:16px;
+  flex-wrap:wrap
+}
+
+@media(max-width:900px) {
+  .hero-grid,.flow,.demo {
+    grid-template-columns:1fr
+  }
+  .grid3,.pricing {
+    grid-template-columns:1fr
+  }
+  .practice {
+    border-right:0;
+    border-bottom:1px solid var(--line)
+  }
+  .nav-links a {
+    display:none
+  }
+  .hero {
+    padding-top:46px
+  }
+  h1 {
+    letter-spacing:-2px
+  }
+  .select-row {
+    grid-template-columns:1fr
+  }
+  .hero-proof {
+    grid-template-columns:1fr
+  }
+  .chat {
+    min-height:420px
+  }
+
+}
+@media(max-width:560px) {
+  .wrap {
+    padding:0 16px
+  }
+  .nav-inner {
+    height:60px
+  }
+  .hero-actions,.actions {
+    flex-direction:column
+  }
+  .primary,.secondary {
+    width:100%
+  }
+  .cta {
+    padding:30px 20px;
+    border-radius:22px
+  }
+  .panel {
+    border-radius:20px
+  }
+
+}
+  
+
+/* Account + dashboard prototype */
+.auth-shell {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 420px;
+  gap:20px;
+  align-items:stretch;
+}
+.auth-copy {
+  background:var(--ink);
+  color:#fff;
+  border-radius:28px;
+  padding:32px;
+  box-shadow:var(--shadow);
+}
+.auth-copy p { color:#cbd5e1; margin-top:12px; line-height:1.7; }
+.auth-list { display:grid; gap:10px; margin-top:22px; }
+.auth-list div { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:13px 14px; font-weight:800; }
+.auth-card label { display:block; margin-bottom:12px; }
+.auth-card .field-label { display:block; color:var(--muted); font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.8px; margin-bottom:6px; }
+.auth-card input,.auth-card select { width:100%; border:1px solid var(--line); border-radius:14px; padding:13px 14px; font-weight:700; background:#fff; color:var(--text); }
+.auth-switch { margin-top:12px; color:var(--muted); font-size:14px; }
+.auth-switch button { border:0; background:transparent; color:var(--blue); font-weight:900; }
+.auth-note { margin-top:14px; background:#f8fafc; border:1px solid var(--line); border-radius:16px; padding:13px; color:var(--muted); font-size:13px; line-height:1.6; }
+.status-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); background:#fff; border-radius:999px; padding:8px 12px; color:var(--muted); font-weight:800; font-size:13px; }
+.dashboard { display:none; background:radial-gradient(circle at 80% 0%,#eef2ff 0,transparent 32rem),var(--bg); min-height:100vh; }
+.dashboard.on { display:block; }
+body.route-home > main.dashboard { display:none; }
+body.route-home > section#account { display:none; }
+body.route-account > header,
+body.route-account > section:not(#account),
+body.route-account > footer,
+body.route-account > main.dashboard { display:none!important; }
+body.route-account > section#account { display:block; min-height:calc(100vh - 66px); padding-top:64px; }
+body.route-dashboard > nav,
+body.route-dashboard > header,
+body.route-dashboard > section,
+body.route-dashboard > footer { display:none!important; }
+body.route-dashboard > main.dashboard { display:block!important; }
+.dashboard-nav { display:flex; align-items:center; justify-content:space-between; padding:18px 0; border-bottom:1px solid rgba(17,24,39,.08); }
+.dashboard-nav .brand { cursor:pointer; }
+.dash-hero { padding:46px 0 18px; }
+.dash-top { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap; }
+.dash-top h2 { font-size:clamp(34px,4vw,52px); letter-spacing:-2px; line-height:1.02; margin-top:12px; }
+.dash-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.dash-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:16px; margin-top:18px; }
+.dash-card { background:#fff; border:1px solid var(--line); border-radius:24px; padding:22px; box-shadow:0 14px 40px rgba(15,23,42,.04); }
+.dash-card h3 { font-size:20px; letter-spacing:-.5px; margin-bottom:8px; }
+.dash-card p { color:var(--muted); font-size:14px; line-height:1.65; }
+.progress-bar { height:10px; background:#eef2ff; border-radius:999px; overflow:hidden; margin-top:14px; }
+.progress-bar span { display:block; height:100%; width:42%; background:var(--blue); border-radius:999px; }
+.topic-list { display:grid; gap:9px; margin-top:16px; }
+.topic-row { display:flex; justify-content:space-between; gap:12px; align-items:center; border:1px solid var(--line); background:#fbfdff; border-radius:15px; padding:12px 13px; }
+.topic-row label { display:flex; align-items:center; gap:10px; font-weight:800; }
+.topic-row small { color:var(--muted); font-weight:800; }
+.topic-row input { width:18px; height:18px; accent-color:var(--blue); }
+.question-bank { display:grid; gap:10px; margin-top:16px; }
+.bank-item { border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfdff; }
+.bank-meta { font-family:var(--mono); font-size:11px; color:var(--blue); font-weight:800; margin-bottom:6px; }
+.bank-item strong { display:block; margin-bottom:5px; }
+.mock-builder { background:var(--ink); color:#fff; }
+.mock-builder p { color:#cbd5e1; }
+.mock-options { display:grid; gap:10px; margin-top:16px; }
+.mock-options div { display:flex; justify-content:space-between; gap:10px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:12px 13px; }
+.mock-options span { color:#cbd5e1; font-size:13px; font-weight:800; }
+.course-pill-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.course-pill-row span { border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 10px; color:var(--muted); font-size:13px; font-weight:800; }
+.hidden-auth { display:none!important; }
+.supabase-status { margin-top:12px; border-radius:16px; padding:12px 13px; background:#eef2ff; border:1px solid rgba(37,87,246,.16); color:#1e293b; font-size:13px; line-height:1.55; }
+.supabase-status strong { color:var(--blue); }
+.auth-tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:14px 0 16px; }
+.auth-tab { border:1px solid var(--line); background:#fff; border-radius:999px; padding:10px 12px; color:var(--muted); font-weight:900; }
+.auth-tab.on { background:var(--blue); color:#fff; border-color:var(--blue); }
+.auth-message { margin-top:12px; border-radius:14px; padding:11px 12px; font-size:13px; line-height:1.55; display:none; }
+.auth-message.on { display:block; }
+.auth-message.good { background:#ecfdf3; border:1px solid #bbf7d0; color:#14532d; }
+.auth-message.warn { background:#fffbeb; border:1px solid #fde68a; color:#713f12; }
+.brand { cursor:pointer; }
+
+@media(max-width:900px){ .auth-shell,.dash-grid{grid-template-columns:1fr;} }
+
+  </style>
+  <script>
+   window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+   };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ </head>
+ <body>
+  <nav class="nav">
+   <div class="wrap nav-inner">
+    <div class="brand" onclick="goHome()" role="button" tabindex="0" aria-label="Go to homepage">
+     stem
+     <span>
+      A*I
+     </span>
+    </div>
+    <div class="nav-links">
+     <a href="#features">
+      Features
+     </a>
+     <a href="#demo">
+      Demo
+     </a>
+     <a href="#pricing">
+      Pricing
+     </a>
+     <button class="link-btn" onclick="goToAccount()">Create account</button>
+     <button class="primary" onclick="scrollToId('demo')">
+      Try demo &rarr;
+     </button>
+    </div>
+   </div>
+  </nav>
+  <header class="hero">
+   <div class="wrap hero-grid">
+    <div>
+     <div class="eyebrow">
+      <span class="dot">
+      </span>
+      AI revision built around UK exam specs
+     </div>
+     <h1>
+      The smarter way to revise
+      <span class="blue">
+       STEM
+      </span>
+      .
+     </h1>
+     <p class="lead">
+      Generate exam-board-specific A-Level questions for Maths, Further Maths, Physics and Chemistry — built to match the style, topic weighting and methods students are actually expected to see in exams.
+     </p>
+     <div class="hero-actions">
+      <button class="primary" onclick="scrollToId('demo')">
+       Start a practice session &rarr;
+      </button>
+      <button class="secondary" onclick="scrollToId('features')">
+       See what it does
+      </button>
+     </div>
+     <div class="trust">
+      <span class="chip">
+       Edexcel
+      </span>
+      <span class="chip">
+       AQA
+      </span>
+      <span class="chip">
+       OCR
+      </span>
+      <span class="chip">
+       A-Level focused
+      </span>
+      <span class="chip">
+       Maths &middot; Further Maths &middot; Physics &middot; Chemistry
+      </span>
+     </div>
+     <div class="hero-proof" aria-label="stemAI product strengths">
+      <div class="proof-tile">
+       <strong>Board-specific</strong>
+       <span>Questions shaped around Edexcel, AQA and OCR expectations.</span>
+      </div>
+      <div class="proof-tile">
+       <strong>Exam-style</strong>
+       <span>Marks, wording and method prompts designed to feel like papers.</span>
+      </div>
+      <div class="proof-tile">
+       <strong>Targeted revision</strong>
+       <span>Topic checklists link directly to practice and feedback.</span>
+      </div>
+     </div>
+    </div>
+    <div class="panel">
+     <div class="mock-top">
+      <strong>
+       Live practice
+      </strong>
+      <div class="traffic">
+       <i>
+       </i>
+       <i>
+       </i>
+       <i>
+       </i>
+      </div>
+     </div>
+     <div class="mock-body">
+      <div class="question-card">
+       <div class="meta">
+        EDEXCEL A-LEVEL &middot; INTEGRATION &middot; 5 MARKS
+       </div>
+       <div class="q exam-paper">
+        <div class="exam-line">
+         <span class="q-num">1.</span>
+         <span>
+          The function \(f\) is defined by
+          \[f(x)=3x^2+2x-1.\]
+          <span class="part"><b>(a)</b> Find \(\displaystyle \int f(x)\,dx\).</span>
+          <span class="part"><b>(b)</b> Hence evaluate \(\displaystyle \int_{1}^{3} f(x)\,dx\), giving your answer as an exact value.</span>
+         </span>
+        </div>
+        <div class="marks-note">[5 marks]</div>
+       </div>
+       <div class="marks">
+        <span class="mark">
+        </span>
+        <span class="mark">
+        </span>
+        <span class="mark">
+        </span>
+        <span class="mark">
+        </span>
+        <span class="mark">
+        </span>
+       </div>
+      </div>
+      <div class="tutor">
+       <div class="mini-title">
+        stemA*I tutor &middot; online
+       </div>
+       <div class="mini-sub">
+        Knows the selected topic, board and current question.
+       </div>
+       <div class="tutor-row">
+        <div class="bubble ai">
+         Start by integrating each term separately. What do you get for \(3x^2\)?
+        </div>
+       </div>
+       <div class="tutor-row">
+        <div class="bubble me">
+         \((x^3)\)?
+        </div>
+       </div>
+       <div class="tutor-row">
+        <div class="bubble ai">
+         Exactly. Then integrate \(2x\) and \(-1\), add \(C\), and substitute the upper and lower limits.
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <section class="section" id="features">
+   <div class="wrap">
+    <div class="section-head">
+     <div class="label">
+      Product core
+     </div>
+     <h2>
+      Not another generic chatbot.
+     </h2>
+     <p class="sub">
+      The USP is simple: students choose their exact exam board, subject and topic, then stemA*I generates exam-style practice that matches the wording, structure, marks and expected methods of real A-Level papers.
+     </p>
+    </div>
+    <div class="grid3">
+     <div class="card">
+      <div class="icon">
+       &Sigma;
+      </div>
+      <h3>
+       Spec-aware questions
+      </h3>
+      <p>
+       Pick board, subject and topic across Maths, Further Maths, Physics and Chemistry. Generate realistic exam-style questions with marks, difficulty, expected method and board-specific wording.
+      </p>
+     </div>
+     <div class="card">
+      <div class="icon">
+       &checkmark;
+      </div>
+      <h3>
+       Marking feedback
+      </h3>
+      <p>
+       Submit working and get concise examiner-style feedback: what is right, what is missing, and what to fix.
+      </p>
+     </div>
+     <div class="card">
+      <div class="icon">
+       AI
+      </div>
+      <h3>
+       Guided tutor
+      </h3>
+      <p>
+       The tutor uses the current question as context and nudges the student through the method instead of handing over the answer.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="section">
+   <div class="wrap flow">
+    <div class="steps">
+     <div class="step">
+      <div class="num">
+       1
+      </div>
+      <div>
+       <h3>
+        Choose the exact course
+       </h3>
+       <p>
+        A-Level Maths, A-Level Further Maths, Physics, Chemistry &mdash; no vague revision prompts.
+       </p>
+      </div>
+     </div>
+     <div class="step">
+      <div class="num">
+       2
+      </div>
+      <div>
+       <h3>
+        Practise by topic
+       </h3>
+       <p>
+        Target weak areas like integration, complex numbers, matrices, mechanics, bonding or kinetics.
+       </p>
+      </div>
+     </div>
+     <div class="step">
+      <div class="num">
+       3
+      </div>
+      <div>
+       <h3>
+        Track exam readiness
+       </h3>
+       <p>
+        Build a record of attempted questions, weak topics and mock-paper performance.
+       </p>
+      </div>
+     </div>
+    </div>
+    <div class="spec">
+     <h3>
+      What makes the real version credible
+     </h3>
+     <div class="spec-list">
+      <div class="spec-item">
+       <b>
+        Question generation
+       </b>
+       <span class="tick">
+        grounded by spec
+       </span>
+      </div>
+      <div class="spec-item">
+       <b>
+        Mark schemes
+       </b>
+       <span class="tick">
+        rubric checked
+       </span>
+      </div>
+      <div class="spec-item">
+       <b>
+        Mock papers
+       </b>
+       <span class="tick">
+        weighted by topic
+       </span>
+      </div>
+      <div class="spec-item">
+       <b>
+        Student progress
+       </b>
+       <span class="tick">
+        saved securely
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="section" id="demo">
+   <div class="wrap">
+    <div class="section-head">
+     <div class="label">
+      Interactive prototype
+     </div>
+     <h2>
+      Try the practice flow.
+     </h2>
+     <p class="sub">
+      Choose an exam board, level, subject and topic. This prototype uses local sample questions; the production version would generate board-specific questions through a secure backend.
+     </p>
+    </div>
+    <div class="banner">
+     <strong>
+      Security note:
+     </strong>
+     <span>
+      I removed the &ldquo;paste your Anthropic API key&rdquo; pattern. For a real launch, model calls should run through a backend API with rate limits, auth and logging.
+     </span>
+    </div>
+    <div class="panel demo">
+     <div class="practice">
+      <div class="selector-title">Choose the exact course before generating a question</div>
+      <div class="select-row">
+       <label>
+        <span class="field-label">Exam board</span>
+        <select id="board">
+         <option>
+          Edexcel
+         </option>
+         <option>
+          AQA
+         </option>
+         <option>
+          OCR
+         </option>
+        </select>
+       </label>
+       <label>
+        <span class="field-label">Qualification level</span>
+        <select id="level">
+         <option>
+          A-Level
+         </option>
+         <option>
+          AS-Level
+         </option>
+        </select>
+       </label>
+      </div>
+      <div class="tabs" id="subjects">
+      </div>
+      <div class="tabs" id="topics">
+      </div>
+      <button class="primary" onclick="generateQuestion()">
+       Generate question &rarr;
+      </button>
+      <div class="demo-q" id="questionBox">
+       <h4>
+        Ready when you are.
+       </h4>
+       <p>
+        Choose a subject and topic, then generate a question.
+       </p>
+      </div>
+     </div>
+     <div class="chat">
+      <div class="chat-head">
+       <div class="avatar">
+        AI
+       </div>
+       <div>
+        <strong>
+         stemA*I Tutor
+        </strong>
+        <div style="font-size:12px;color:var(--green);font-weight:800">
+         ● Online
+        </div>
+       </div>
+      </div>
+      <div class="messages" id="messages">
+       <div class="msg ai">
+        Generate a question and ask me for a hint. I&rsquo;ll guide you through the method.
+       </div>
+      </div>
+      <div class="chat-input">
+       <input id="chatInput" onkeydown="if(event.key==='Enter')sendTutor()" placeholder="Ask for a hint..."/>
+       <button class="send" onclick="sendTutor()">
+        ➜
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="section" id="pricing">
+   <div class="wrap">
+    <div class="section-head">
+     <div class="label">
+      Monetisation
+     </div>
+     <h2>
+      Simple pricing that fits students.
+     </h2>
+    </div>
+    <div class="pricing">
+     <div class="card price">
+      <h3>
+       Free
+      </h3>
+      <div class="amount">
+       &pound;0
+      </div>
+      <ul class="features">
+       <li>
+        Limited daily questions
+       </li>
+       <li>
+        Basic tutor hints
+       </li>
+       <li>
+        Topic checklist
+       </li>
+      </ul>
+      <button class="secondary" onclick="goToAccount()">
+       Start free
+      </button>
+     </div>
+     <div class="card price featured">
+      <div class="ribbon">
+       Best fit
+      </div>
+      <h3>
+       Plus
+      </h3>
+      <div class="amount">
+       &pound;6
+       <small>
+        /mo
+       </small>
+      </div>
+      <ul class="features">
+       <li>
+        Unlimited practice questions
+       </li>
+       <li>
+        Full answer marking
+       </li>
+       <li>
+        Mock paper generator
+       </li>
+       <li>
+        Progress dashboard
+       </li>
+      </ul>
+      <button class="primary" onclick="goToAccount()">
+       Upgrade
+      </button>
+     </div>
+     <div class="card price">
+      <h3>
+       School
+      </h3>
+      <div class="amount">
+       Custom
+      </div>
+      <ul class="features">
+       <li>
+        Teacher dashboard
+       </li>
+       <li>
+        Class-level analytics
+       </li>
+       <li>
+        Safeguarded deployment
+       </li>
+      </ul>
+      <button class="secondary">
+       Contact
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="section">
+   <div class="wrap">
+    <div class="faq">
+     <details open="">
+      <summary>
+       Is this using real AI?
+      </summary>
+      <p>
+       This standalone demo uses local example logic so it works without API keys. The correct production setup would use a backend API connected to a model provider.
+      </p>
+     </details>
+     <details>
+      <summary>
+       What would need building next?
+      </summary>
+      <p>
+       Authentication, database storage, backend question generation, spec-grounded retrieval, payment handling, and a proper admin dashboard.
+      </p>
+     </details>
+     <details>
+      <summary>
+       Can it become a real business?
+      </summary>
+      <p>
+       Yes, but only if the questions are genuinely exam-board faithful and the marking is reliable. That is the hard part and the main moat.
+      </p>
+     </details>
+    </div>
+   </div>
+  </section>
+  <section class="section">
+   <div class="wrap">
+    <div class="cta">
+     <h2>
+      Ready to build your A-Level revision dashboard?
+     </h2>
+     <p>
+      Create a free stemA*I account, choose your exam board and subject, then start from a dashboard built around your course.
+     </p>
+     <div class="hero-actions" style="justify-content:center;margin-bottom:0">
+      <button class="primary" onclick="goToAccount()">
+       Sign up for free &rarr;
+      </button>
+      <button class="secondary" onclick="scrollToId('demo')">
+       Try the demo first
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <section class="section" id="account">
+   <div class="wrap">
+    <div class="section-head">
+     <div class="label">Student account</div>
+     <h2>Create your stemA*I account.</h2>
+     <p class="sub">This page is now Supabase-ready. Add your Supabase URL and anon key in the code, run the SQL setup, and the same account form will save real user profiles.</p>
+    </div>
+    <div class="auth-shell">
+     <div class="auth-copy">
+      <div class="status-pill"><span class="dot"></span> Account system setup</div>
+      <h2 style="margin-top:18px;font-size:38px;letter-spacing:-1.5px;line-height:1.05">Real accounts first, dashboard second.</h2>
+      <p>The correct flow is: sign up, save the student profile, then load the dashboard from saved data. Supabase will handle authentication while your own database tables store course, checklist and revision progress.</p>
+      <div class="auth-list">
+       <div>✓ Create secure email/password accounts</div>
+       <div>✓ Save exam board and A-Level subject</div>
+       <div>✓ Reload the dashboard from saved profile data</div>
+       <div>✓ Later save topic progress, attempts and mock papers</div>
+      </div>
+      <div class="supabase-status" id="supabaseStatus"><strong>Current mode:</strong> local demo account storage. Paste your Supabase project details into the code to switch on real accounts.</div>
+     </div>
+     <div class="card auth-card">
+      <h3 id="authTitle">Create account</h3>
+      <p style="margin-bottom:10px">Sign up for free, or sign in if you already have an account.</p>
+      <div class="auth-tabs">
+       <button class="auth-tab on" id="signupTab" onclick="setAuthMode('signup')" type="button">Create account</button>
+       <button class="auth-tab" id="signinTab" onclick="setAuthMode('signin')" type="button">Sign in</button>
+      </div>
+      <form id="authForm" onsubmit="handleAccount(event)">
+       <label id="nameField"><span class="field-label">Full name</span><input id="accountName" placeholder="e.g. Alex Taylor" /></label>
+       <label><span class="field-label">Email</span><input id="accountEmail" type="email" required placeholder="student@email.com" /></label>
+       <label id="passwordField"><span class="field-label">Password</span><input id="accountPassword" type="password" required placeholder="Create a password" /></label>
+       <label id="boardField"><span class="field-label">Main exam board</span><select id="accountBoard"><option>Edexcel</option><option>AQA</option><option>OCR</option></select></label>
+       <label id="subjectField"><span class="field-label">Main subject</span><select id="accountSubject"><option>A-Level Maths</option><option>A-Level Further Maths</option><option>A-Level Physics</option><option>A-Level Chemistry</option></select></label>
+       <button class="primary" id="authSubmit" type="submit" style="width:100%">Create account & open dashboard →</button>
+      </form>
+      <div class="auth-message" id="authMessage"></div>
+      <div class="auth-switch">Testing locally? <button onclick="quickSignIn()">Open saved dashboard</button></div>
+      <div class="auth-note"><strong>Supabase setup:</strong> create a Supabase project, run the SQL tables/policies, then paste your Project URL and anon public key into the constants near the bottom of this file.</div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <main class="dashboard" id="dashboard">
+   <div class="wrap dashboard-nav">
+    <div class="brand" onclick="goHome()">stem <span>A*I</span></div>
+    <div class="dash-actions">
+     <button class="secondary" onclick="goHome()">Homepage</button>
+     <button class="primary" onclick="signOut()">Sign out</button>
+    </div>
+   </div>
+   <section class="dash-hero">
+    <div class="wrap dash-top">
+     <div>
+      <div class="label">Student dashboard</div>
+      <h2 id="dashGreeting">Welcome back.</h2>
+      <p class="lead" id="dashSub">Your A-Level revision workspace is ready.</p>
+      <div class="course-pill-row" id="coursePills"></div>
+     </div>
+     <div class="dash-actions">
+      <button class="secondary" onclick="goHome(); setTimeout(()=>scrollToId('demo'),60)">Practise demo</button>
+      <button class="primary" onclick="alert('Question practice from the dashboard will be connected next.')">Start questions →</button>
+     </div>
+    </div>
+   </section>
+   <section class="section" style="padding-top:18px">
+    <div class="wrap dash-grid">
+     <div class="dash-card">
+      <div class="label">Topic checklist</div>
+      <h3>Track the specification topic by topic.</h3>
+      <p>Students should be able to tick off topics, see weak areas, and jump straight into questions for that exact section of the specification.</p>
+      <div class="progress-bar"><span id="topicProgress"></span></div>
+      <div class="topic-list" id="topicList"></div>
+     </div>
+     <div class="dash-card">
+      <div class="label">Course setup</div>
+      <h3>Your selected course</h3>
+      <p id="courseSummary">Course details will appear here after account creation.</p>
+      <div class="course-pill-row"><span>A-Level only</span><span>Edexcel / AQA / OCR</span><span>Exam-style methods</span></div>
+     </div>
+     <div class="dash-card">
+      <div class="label">Exam questions</div>
+      <h3>Past and AI-generated questions.</h3>
+      <p>This is the main work area: filter by exam board, subject, topic, difficulty and marks, then practise with mark-scheme-style feedback.</p>
+      <div class="question-bank">
+       <div class="bank-item"><div class="bank-meta">PAST PAPER STYLE · PURE MATHS · 6 MARKS</div><strong>Integration by substitution</strong><p>Practise a realistic question based on the selected board and topic.</p></div>
+       <div class="bank-item"><div class="bank-meta">AI GENERATED · FURTHER MATHS · 5 MARKS</div><strong>Complex numbers</strong><p>Generate a fresh board-specific question with guided hints.</p></div>
+       <div class="bank-item"><div class="bank-meta">AI GENERATED · PHYSICS · 4 MARKS</div><strong>Mechanics calculation</strong><p>Use formula recall, units and examiner-style reasoning.</p></div>
+      </div>
+     </div>
+     <div class="dash-card mock-builder">
+      <div class="label" style="color:#93c5fd">Mock paper generator</div>
+      <h3>Build realistic mock papers later.</h3>
+      <p>We will keep this lightweight for now, but the dashboard should make the future direction obvious: topic-weighted papers matched to the student’s board.</p>
+      <div class="mock-options">
+       <div><b>Paper type</b><span>Pure / Stats / Mechanics</span></div>
+       <div><b>Length</b><span>30, 60 or 90 mins</span></div>
+       <div><b>Source</b><span>Past + AI-generated</span></div>
+       <div><b>Status</b><span>Prototype placeholder</span></div>
+      </div>
+      <button class="primary" style="margin-top:16px;width:100%" onclick="alert('Mock paper generation will be connected after question generation and marking are reliable.')">Preview mock builder</button>
+     </div>
+    </div>
+   </section>
+  </main>
+
+  <footer>
+   <div class="wrap foot">
+    <div>
+     <strong>
+      stemA*I
+     </strong>
+     &middot; AI-powered STEM revision
+    </div>
+    <div>
+     Built for A-Level focused &middot; Edexcel &middot; AQA &middot; OCR
+    </div>
+   </div>
+  </footer>
+  <script>
+   const DATA={
+ maths:{name:'Maths',topics:{
+  'Integration':{
+   q:String.raw`The function \(f\) is defined by \[f(x)=3x^2+2x-1.\] <span class="part"><b>(a)</b> Find \(\displaystyle \int f(x)\,dx\).</span><span class="part"><b>(b)</b> Hence evaluate \(\displaystyle \int_{1}^{3} f(x)\,dx\), giving your answer as an exact value.</span>`,
+   hint:String.raw`Integrate term by term: \(3x^2\) becomes \(x^3\), \(2x\) becomes \(x^2\), and \(-1\) becomes \(-x\). Then use \(F(3)-F(1)\).`,
+   answer:['x^3','x²','-x','24']
+  },
+  'Differentiation':{
+   q:String.raw`Given \( y=4x^3-5x^2+7x-2 \), find \(\frac{dy}{dx}\) and hence find the gradient of the curve at \(x=2\).`,
+   hint:String.raw`Differentiate each power, then substitute \(x=2\) into the derivative.`,
+   answer:['12x','10x','7','35']
+  },
+  'Vectors':{
+   q:String.raw`The points \(A\) and \(B\) have position vectors \(\begin{pmatrix}2\\1\\3\end{pmatrix}\) and \(\begin{pmatrix}5\\-1\\7\end{pmatrix}\). Find \(\overrightarrow{AB}\) and \(|\overrightarrow{AB}|\).`,
+   hint:String.raw`Subtract \(A\) from \(B\) component-wise, then use Pythagoras in 3D.`,
+   answer:['3','-2','4','sqrt29']
+  }
+ }},
+ further:{name:'Further Maths',topics:{
+  'Complex Numbers':{
+   q:String.raw`Solve \(z^2+4z+13=0\), giving your answers in the form \(a+bi\), where \(a,b\in\mathbb{R}\).`,
+   hint:String.raw`Use the quadratic formula. The discriminant is negative, so write the square root using \(i\).`,
+   answer:['-2','3i']
+  },
+  'Matrices':{
+   q:String.raw`For \(A=\begin{pmatrix}2&1\\5&3\end{pmatrix}\), find \(\det(A)\) and state whether \(A\) is invertible.`,
+   hint:String.raw`For a \(2\times2\) matrix, \(\det(A)=ad-bc\). A non-zero determinant means the matrix is invertible.`,
+   answer:['1','invertible']
+  },
+  'Proof by Induction':{
+   q:String.raw`Prove by induction that \[1+2+\cdots+n=\frac{n(n+1)}{2}\] for all positive integers \(n\).`,
+   hint:String.raw`Check the base case, assume true for \(n=k\), then prove it for \(n=k+1\).`,
+   answer:['base','assume','k+1']
+  }
+ }},
+ physics:{name:'Physics',topics:{
+  'Mechanics':{
+   q:String.raw`A particle of mass \(2.0\,\text{kg}\) accelerates at \(3.0\,\text{m s}^{-2}\). Calculate the resultant force acting on the particle and state the law used.`,
+   hint:String.raw`Use \(F=ma\). The law is Newton’s second law.`,
+   answer:['6','newton']
+  },
+  'Waves':{
+   q:String.raw`A progressive wave has frequency \(50\,\text{Hz}\) and wavelength \(0.40\,\text{m}\). Calculate the wave speed.`,
+   hint:String.raw`Use \(v=f\lambda\).`,
+   answer:['20']
+  },
+  'Electricity':{
+   q:String.raw`A \(12\,\text{V}\) supply is connected across a \(4.0\,\Omega\) resistor. Calculate the current in the resistor.`,
+   hint:String.raw`Use Ohm’s law, \(V=IR\).`,
+   answer:['3']
+  }
+ }},
+ chemistry:{name:'Chemistry',topics:{
+  'Bonding':{
+   q:'Magnesium oxide has a high melting point. Explain this in terms of structure and bonding.',
+   hint:'Think ionic lattice and strong electrostatic attractions.',
+   answer:['ionic','electrostatic','energy']
+  },
+  'Kinetics':{
+   q:'State two factors that can increase the rate of a reaction, and explain one of them in terms of particle collisions.',
+   hint:'Temperature, concentration, pressure, surface area or catalyst. Link to collision frequency or activation energy.',
+   answer:['temperature','concentration','collision']
+  },
+  'Energetics':{
+   q:String.raw`Define an exothermic reaction and state the sign of \(\Delta H\).`,
+   hint:String.raw`Energy is transferred to the surroundings, so \(\Delta H\) is negative.`,
+   answer:['surroundings','negative']
+  }
+ }}
+};
+
+let subject='maths',topic='Integration',current=null;
+
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+
+function render(){const s=document.getElementById('subjects'),t=document.getElementById('topics');s.innerHTML='';Object.keys(DATA).forEach(k=>{const b=document.createElement('button');b.className='tab '+(k===subject?'on':'');b.textContent=DATA[k].name;b.onclick=()=>{subject=k;topic=Object.keys(DATA[k].topics)[0];render()};s.appendChild(b)});t.innerHTML='';Object.keys(DATA[subject].topics).forEach(k=>{const b=document.createElement('button');b.className='tab '+(k===topic?'on':'');b.textContent=k;b.onclick=()=>{topic=k;render()};t.appendChild(b)})}
+
+function generateQuestion(){current=DATA[subject].topics[topic];const board=document.getElementById('board').value,level=document.getElementById('level').value;document.getElementById('questionBox').innerHTML=`<div class="meta">${board.toUpperCase()} ${level.toUpperCase()} · ${topic.toUpperCase()} · 5 MARKS</div><div class="exam-paper"><div class="exam-line"><span class="q-num">1.</span><h4>${current.q}</h4></div><div class="marks-note">[5 marks]</div></div><textarea id="answer" placeholder="Write your answer or working here..."></textarea><div class="actions"><button class="primary" onclick="markAnswer()">Submit answer</button><button class="secondary" onclick="generateQuestion()">New question</button></div><div id="feedback"></div>`;if(window.MathJax){MathJax.typesetPromise([document.getElementById('questionBox')]);}addMsg('ai',`Generated a ${board} ${level} ${topic} question. Try it first, then ask me for a hint if needed.`)}
+
+function markAnswer(){const ans=(document.getElementById('answer').value||'').toLowerCase().replace(/\s/g,'');const hits=current.answer.filter(x=>ans.includes(x.toLowerCase().replace(/\s/g,''))).length;const total=current.answer.length;const marks=Math.max(1,Math.round((hits/total)*5));const good=hits>=Math.ceil(total*.65);document.getElementById('feedback').innerHTML=`<div class="feedback ${good?'good':'warn'}"><strong>${good?'Good attempt':'Needs work'} — ${marks}/5</strong><br>${good?'You have the main method. Tighten notation and make sure the final value is clearly stated.':'You are missing at least one key step. Ask the tutor for a hint and focus on the method rather than guessing the final answer.'}</div>`;addMsg('ai',`Marked: ${marks}/5. ${good?'Your method is mostly there.':'There is a method gap — ask me to walk through the next step.'}`)}
+
+function addMsg(type,text){const m=document.getElementById('messages');const d=document.createElement('div');d.className='msg '+type;d.textContent=text;m.appendChild(d);if(window.MathJax){MathJax.typesetPromise([d]);}m.scrollTop=m.scrollHeight}
+
+function sendTutor(){const input=document.getElementById('chatInput');const txt=input.value.trim();if(!txt)return;input.value='';addMsg('user',txt);let reply;if(!current){reply='Generate a question first, then I can give a targeted hint.'}else if(/answer|solve|do it/i.test(txt)){reply='I’ll guide rather than dump the answer. First identify the formula or rule needed, then apply it to each term or quantity in the question.'}else{reply=current.hint}setTimeout(()=>addMsg('ai',reply),220)}
+
+
+const TOPICS_BY_SUBJECT={
+ 'A-Level Maths':['Algebra and functions','Coordinate geometry','Sequences and series','Trigonometry','Differentiation','Integration','Numerical methods','Statistics','Mechanics'],
+ 'A-Level Further Maths':['Complex numbers','Matrices','Further calculus','Hyperbolic functions','Polar coordinates','Proof by induction','Further mechanics','Further statistics'],
+ 'A-Level Physics':['Measurements and errors','Particles and radiation','Mechanics','Materials','Waves','Electricity','Fields','Nuclear physics'],
+ 'A-Level Chemistry':['Atomic structure','Bonding','Energetics','Kinetics','Equilibria','Redox','Organic chemistry','Analysis']
+};
+
+// === Supabase configuration ===
+// 1) Create a Supabase project.
+// 2) Copy your Project URL and anon public key from Supabase > Project Settings > API.
+// 3) Paste them here. Until then, the site falls back to local demo mode.
+const SUPABASE_URL = 'PASTE_YOUR_SUPABASE_PROJECT_URL_HERE';
+const SUPABASE_ANON_KEY = 'PASTE_YOUR_SUPABASE_ANON_PUBLIC_KEY_HERE';
+const SUPABASE_READY = SUPABASE_URL.startsWith('https://') && SUPABASE_ANON_KEY.length > 40;
+const supabaseClient = SUPABASE_READY && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+let authMode='signup';
+
+function getStoredAccount(){try{return JSON.parse(localStorage.getItem('stemaiAccount')||'null')}catch(e){return null}}
+function saveStoredAccount(account){localStorage.setItem('stemaiAccount',JSON.stringify(account))}
+function clearStoredAccount(){localStorage.removeItem('stemaiAccount')}
+
+function showAuthMessage(text,type='warn'){
+ const box=document.getElementById('authMessage');
+ if(!box)return;
+ box.className='auth-message on '+type;
+ box.innerHTML=text;
+}
+
+function setAuthMode(mode){
+ authMode=mode;
+ const isSignup=mode==='signup';
+ document.getElementById('signupTab').classList.toggle('on',isSignup);
+ document.getElementById('signinTab').classList.toggle('on',!isSignup);
+ document.getElementById('authTitle').textContent=isSignup?'Create account':'Sign in';
+ document.getElementById('authSubmit').textContent=isSignup?'Create account & open dashboard →':'Sign in & open dashboard →';
+ ['nameField','boardField','subjectField'].forEach(id=>document.getElementById(id).classList.toggle('hidden-auth',!isSignup));
+ document.getElementById('accountName').required=isSignup;
+ document.getElementById('accountPassword').placeholder=isSignup?'Create a password':'Enter your password';
+ const box=document.getElementById('authMessage');
+ if(box) box.className='auth-message';
+}
+
+async function handleAccount(event){
+ event.preventDefault();
+ if(authMode==='signin'){
+  await signInAccount();
+ }else{
+  await createAccount();
+ }
+}
+
+function formAccountFromInputs(userId='local-demo-user'){
+ return {
+  id:userId,
+  name:document.getElementById('accountName').value.trim(),
+  email:document.getElementById('accountEmail').value.trim(),
+  board:document.getElementById('accountBoard').value,
+  subject:document.getElementById('accountSubject').value,
+  createdAt:new Date().toISOString(),
+  completedTopics:[]
+ };
+}
+
+async function createAccount(){
+ const password=document.getElementById('accountPassword').value;
+ if(password.length<6){showAuthMessage('Password should be at least 6 characters for Supabase email/password accounts.');return;}
+ if(!SUPABASE_READY){
+  const account=formAccountFromInputs();
+  saveStoredAccount(account);
+  showAuthMessage('<strong>Local demo account created.</strong> Add Supabase keys to make this a real saved account.','good');
+  openDashboard(account,true);
+  return;
+ }
+ const email=document.getElementById('accountEmail').value.trim();
+ const {data,error}=await supabaseClient.auth.signUp({email,password});
+ if(error){showAuthMessage(error.message);return;}
+ const user=data.user;
+ if(!user){showAuthMessage('Check your email to confirm your account, then sign in.');return;}
+ const account=formAccountFromInputs(user.id);
+ const {error:profileError}=await supabaseClient.from('profiles').upsert({
+  id:user.id,
+  full_name:account.name,
+  email:account.email,
+  exam_board:account.board,
+  main_subject:account.subject,
+  level:'A-Level'
+ });
+ if(profileError){showAuthMessage('Account created, but the profile could not be saved: '+profileError.message);return;}
+ saveStoredAccount(account);
+ showAuthMessage('<strong>Account created.</strong> Opening your dashboard now.','good');
+ openDashboard(account,true);
+}
+
+async function signInAccount(){
+ const email=document.getElementById('accountEmail').value.trim();
+ const password=document.getElementById('accountPassword').value;
+ if(!SUPABASE_READY){quickSignIn();return;}
+ const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+ if(error){showAuthMessage(error.message);return;}
+ const account=await loadSupabaseProfile(data.user.id,email);
+ if(account){saveStoredAccount(account);openDashboard(account,true)}
+}
+
+async function loadSupabaseProfile(userId,emailFallback=''){
+ const {data,error}=await supabaseClient.from('profiles').select('*').eq('id',userId).single();
+ if(error){showAuthMessage('Signed in, but profile could not be loaded: '+error.message);return null;}
+ const account={
+  id:userId,
+  name:data.full_name || 'Student',
+  email:data.email || emailFallback,
+  board:data.exam_board || 'Edexcel',
+  subject:data.main_subject || 'A-Level Maths',
+  createdAt:data.created_at || new Date().toISOString(),
+  completedTopics:data.completed_topics || []
+ };
+ return account;
+}
+
+async function restoreSupabaseSession(){
+ if(!SUPABASE_READY)return null;
+ const {data}=await supabaseClient.auth.getSession();
+ const user=data.session?.user;
+ if(!user)return null;
+ return await loadSupabaseProfile(user.id,user.email);
+}
+
+function goHome(){
+ document.body.className=document.body.className.replace(/route-\w+/g,'').trim();
+ document.body.classList.add('route-home');
+ document.getElementById('dashboard').classList.remove('on');
+ if(location.hash){history.pushState('',document.title,location.pathname+location.search)}
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goToAccount(){
+ document.body.className=document.body.className.replace(/route-\w+/g,'').trim();
+ document.body.classList.add('route-account');
+ document.getElementById('dashboard').classList.remove('on');
+ history.pushState('',document.title,'#account');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function quickSignIn(){
+ const account=getStoredAccount();
+ if(!account){showAuthMessage('Create an account first, or add Supabase keys and sign in.');return;}
+ openDashboard(account,true);
+}
+
+function openDashboard(account,pushRoute=false){
+ if(pushRoute){history.pushState('',document.title,'#dashboard')}
+ document.body.className=document.body.className.replace(/route-\w+/g,'').trim();
+ document.body.classList.add('route-dashboard');
+ document.getElementById('dashboard').classList.add('on');
+ document.getElementById('dashGreeting').textContent=`Welcome, ${account.name.split(' ')[0] || 'student'}.`;
+ document.getElementById('dashSub').textContent=`Your ${account.board} ${account.subject} workspace is ready.`;
+ document.getElementById('courseSummary').textContent=`You are currently set up for ${account.board} ${account.subject}. Next, this dashboard should save topic progress, question attempts, scores and mock paper history in Supabase.`;
+ document.getElementById('coursePills').innerHTML=`<span>${account.board}</span><span>${account.subject}</span><span>Specification checklist</span><span>Question bank</span>`;
+ renderTopicChecklist(account);
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+async function routeFromHash(){
+ let account=getStoredAccount();
+ if(!account && SUPABASE_READY){account=await restoreSupabaseSession(); if(account) saveStoredAccount(account);}
+ if(location.hash==='#dashboard'){
+  if(account){openDashboard(account,false)}else{goToAccount()}
+ }else if(location.hash==='#account'){
+  goToAccount();
+ }else{
+  document.body.className=document.body.className.replace(/route-\w+/g,'').trim();
+  document.body.classList.add('route-home');
+  document.getElementById('dashboard').classList.remove('on');
+ }
+}
+
+function renderTopicChecklist(account){
+ const topics=TOPICS_BY_SUBJECT[account.subject]||TOPICS_BY_SUBJECT['A-Level Maths'];
+ const completed=new Set(account.completedTopics||[]);
+ const list=document.getElementById('topicList');
+ list.innerHTML='';
+ topics.forEach(topicName=>{
+  const row=document.createElement('div');
+  row.className='topic-row';
+  row.innerHTML=`<label><input type="checkbox" ${completed.has(topicName)?'checked':''} onchange="toggleTopic('${topicName.replace(/'/g,"\\'")}')"> ${topicName}</label><small>${completed.has(topicName)?'Secure':'To revise'}</small>`;
+  list.appendChild(row);
+ });
+ const pct=Math.round((completed.size/topics.length)*100);
+ document.getElementById('topicProgress').style.width=Math.max(6,pct)+'%';
+}
+
+async function toggleTopic(topicName){
+ const account=getStoredAccount();
+ if(!account)return;
+ const set=new Set(account.completedTopics||[]);
+ if(set.has(topicName)){set.delete(topicName)}else{set.add(topicName)}
+ account.completedTopics=[...set];
+ saveStoredAccount(account);
+ renderTopicChecklist(account);
+ if(SUPABASE_READY && account.id && account.id!=='local-demo-user'){
+  await supabaseClient.from('profiles').update({completed_topics:account.completedTopics}).eq('id',account.id);
+ }
+}
+
+async function signOut(){
+ if(SUPABASE_READY){await supabaseClient.auth.signOut();}
+ clearStoredAccount();
+ document.getElementById('dashboard').classList.remove('on');
+ goToAccount();
+}
+
+window.addEventListener('DOMContentLoaded',async()=>{
+ document.getElementById('supabaseStatus').innerHTML=SUPABASE_READY
+  ? '<strong>Current mode:</strong> Supabase connected. Accounts and profiles will save to your database.'
+  : '<strong>Current mode:</strong> local demo account storage. Paste your Supabase project details into the code to switch on real accounts.';
+ setAuthMode('signup');
+ const account=getStoredAccount() || await restoreSupabaseSession();
+ if(account){saveStoredAccount(account)}
+ await routeFromHash();
+});
+
+window.addEventListener('popstate',routeFromHash);
+window.addEventListener('hashchange',routeFromHash);
+
+render();
+  </script>
+ </body>
+</html>
